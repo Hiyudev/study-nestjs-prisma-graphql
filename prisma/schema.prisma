@@ -7,10 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model NewsletterUser {
+model User {
   id       String @id @default(uuid())
   email    String @unique
   username String
 
-  @@map("NewsletterUsers")
+  @@map("Users")
 }
