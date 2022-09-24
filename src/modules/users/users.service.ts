@@ -14,7 +14,7 @@ export class UsersService {
     });
 
     if (userExists) {
-      throw new Error('Newsletter user already exists');
+      throw new Error('User already exists');
     }
 
     const user = await this.service.user.create({
