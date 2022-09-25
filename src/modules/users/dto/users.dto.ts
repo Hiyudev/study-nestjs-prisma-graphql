@@ -3,3 +3,8 @@ export type UserDTO = {
   email: string;
   username: string;
 };
+
+export type UserReturnTypeDTO = {
+  email: string;
+  username: string;
+}

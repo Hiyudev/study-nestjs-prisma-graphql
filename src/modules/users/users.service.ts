@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/services/PrismaService';
-import { UserDTO } from './dto/users.dto';
+import { UserDTO, UserReturnTypeDTO } from './dto/users.dto';
 
 @Injectable()
 export class UsersService {
   constructor(private service: PrismaService) {}
 
-  async create(data: UserDTO) {
+  async create(data: UserDTO):  Promise<UserReturnTypeDTO> {
     const userExists = await this.service.user.findFirst({
       where: {
         email: data.email,
@@ -19,12 +19,16 @@ export class UsersService {
 
     const user = await this.service.user.create({
       data,
+      select: {
+        username: true,
+        email: true,
+      }
     });
 
     return user;
   }
 
-  async getAll() {
+  async getAll(): Promise<UserReturnTypeDTO[]> {
     const nlUsers = await this.service.user.findMany({
       select: {
         username: true,
@@ -34,7 +38,7 @@ export class UsersService {
     return nlUsers;
   }
 
-  async get(id: string) {
+  async get(id: string): Promise<UserReturnTypeDTO> {
     const user = await this.service.user.findUnique({
       where: {
         id,
@@ -48,7 +52,7 @@ export class UsersService {
     return user;
   }
 
-  async update(id: string, data: Partial<UserDTO>) {
+  async update(id: string, data: Partial<UserDTO>): Promise<UserReturnTypeDTO> {
     const user = await this.service.user.update({
       where: {
         id,
@@ -59,7 +63,7 @@ export class UsersService {
     return user;
   }
 
-  async delete(id: string) {
+  async delete(id: string): Promise<UserReturnTypeDTO> {
     const user = await this.service.user.delete({
       where: {
         id,
