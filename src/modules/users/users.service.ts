@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/services/PrismaService';
+import { PrismaService } from 'src/services/PrismaService/Prisma.service';
 import { UserDTO, UserReturnTypeDTO } from './dto/users.dto';
 
 @Injectable()
 export class UsersService {
   constructor(private service: PrismaService) {}
 
-  async create(data: UserDTO):  Promise<UserReturnTypeDTO> {
+  async create(data: UserDTO): Promise<UserReturnTypeDTO> {
     const userExists = await this.service.user.findFirst({
       where: {
         email: data.email,
@@ -19,22 +19,13 @@ export class UsersService {
 
     const user = await this.service.user.create({
       data,
-      select: {
-        username: true,
-        email: true,
-      }
     });
 
     return user;
   }
 
   async getAll(): Promise<UserReturnTypeDTO[]> {
-    const nlUsers = await this.service.user.findMany({
-      select: {
-        username: true,
-        email: true,
-      },
-    });
+    const nlUsers = await this.service.user.findMany();
     return nlUsers;
   }
 
@@ -42,10 +33,6 @@ export class UsersService {
     const user = await this.service.user.findUnique({
       where: {
         id,
-      },
-      select: {
-        username: true,
-        email: true,
       },
     });
 
