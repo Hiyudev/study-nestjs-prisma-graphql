@@ -1,0 +1,27 @@
+type Institution {
+  id: String
+  name: String
+  abreviation: String
+}
+
+input CreateInstitutionInput {
+  name: String
+  abreviation: String
+}
+
+input UpdateInstitutionInput {
+  id: String!
+  name: String
+  abreviation: String
+}
+
+type Query {
+  institutions: [Institution]
+  institution(id: String!): Institution
+}
+
+type Mutation {
+  createInstitution(createInstitutionInput: CreateInstitutionInput!): Institution!
+  updateInstitution(updateInstitutionInput: UpdateInstitutionInput!): Institution
+  removeInstitution(id: String!): Institution
+}

@@ -14,3 +14,11 @@ model User {
 
   @@map("Users")
 }
+
+model Instituition {
+  id          String @id @default(uuid())
+  name        String @unique
+  abreviation String @unique
+
+  @@map("Instituitions")
+}
