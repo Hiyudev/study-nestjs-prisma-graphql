@@ -13,7 +13,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "dev": "concurrently \"pnpm start:dev\" \"pnpm generate:dev\"",
+    "dev": "concurrently \"pnpm start:dev\" \"pnpm generate:dev\" \"pnpm studio\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -23,7 +23,7 @@
     "migrate": "prisma migrate dev",
     "generate": "prisma generate",
     "generate:dev": "prisma generate --watch",
-    "studio": "prisma studio"
+    "studio": "prisma studio --browser none"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.1.0",
