@@ -11,6 +11,9 @@ export class UsersService {
       where: {
         email: data.email,
       },
+      include: {
+        institutionAssociated: true,
+      },
     });
 
     if (userExists) {
@@ -19,13 +22,20 @@ export class UsersService {
 
     const user = await this.service.user.create({
       data,
+      include: {
+        institutionAssociated: true,
+      },
     });
 
     return user;
   }
 
   async getAll(): Promise<UserReturnTypeDTO[]> {
-    const nlUsers = await this.service.user.findMany();
+    const nlUsers = await this.service.user.findMany({
+      include: {
+        institutionAssociated: true,
+      },
+    });
     return nlUsers;
   }
 
@@ -33,6 +43,9 @@ export class UsersService {
     const user = await this.service.user.findUnique({
       where: {
         id,
+      },
+      include: {
+        institutionAssociated: true,
       },
     });
 
@@ -45,6 +58,9 @@ export class UsersService {
         id,
       },
       data,
+      include: {
+        institutionAssociated: true,
+      },
     });
 
     return user;
@@ -54,6 +70,9 @@ export class UsersService {
     const user = await this.service.user.delete({
       where: {
         id,
+      },
+      include: {
+        institutionAssociated: true,
       },
     });
 

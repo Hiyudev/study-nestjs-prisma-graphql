@@ -2,17 +2,21 @@ type User {
   id: String
   email: String
   username: String
+  institutionAssociatedID: String
+  institutionAssociated: Institution
 }
 
 input CreateUserInput {
   email: String
   username: String
+  institutionAssociatedID: String
 }
 
 input UpdateUserInput {
   id: String!
   email: String
   username: String
+  institutionAssociatedID: String
 }
 
 type Query {
