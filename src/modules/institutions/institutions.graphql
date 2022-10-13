@@ -1,5 +1,5 @@
 type Institution {
-  id: String
+  id: String!
   name: String
   abreviation: String
 }
