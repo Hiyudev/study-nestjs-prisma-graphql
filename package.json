@@ -32,6 +32,7 @@
     "@nestjs/graphql": "^10.1.2",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.1.2",
     "apollo-server-core": "^3.10.2",
     "apollo-server-express": "^3.10.2",
     "graphql": "^16.6.0",
