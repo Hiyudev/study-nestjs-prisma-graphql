@@ -1,73 +1,126 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+    <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo">
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+    
+<h3 align="center">Study Nest.JS with Prisma and GraphQL</h3>
+  
+<p align="center">
+This project is mainly for study purposes. Explored how Nest.JS can be used as a back-end framework along with Apollo + GraphQL, Prisma, Swagger native support.
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<p align="center">
+ <a href="#getting_started">Getting started</a> •
+ <a href="#built_using">Technologies</a> •
+ <a href="#authors">Authors</a>
+</p>
 
-## Installation
+---
 
-```bash
-$ npm install
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+### 🎐 Prerequisites
+
+1. Install `node >= 12`
+
+### ✨ Installing
+
+1. Clone this repository or install all the files
+2. Run `pnpm i`
+3. Run locally with `pnpm dev`
+
+### 🏁 Run
+1. Visit swagger page at `https://localhost:3000/api` to see all the endpoints available and test them out with REST.
+
+<img width="600" alt="Swagger API web page" src="./.github/Swagger.png"/>
+
+2. Visit apollo graphql playground at `https://localhost:3000/graphql` to play around with graphql and send queries and mutations
+
+<img width="600" alt="Apollo studio web page" src="./.github/Apollo.png"/>
+
+3. Visit prisma studio page at `https://localhost:5555` to an interactive database explorer
+
+<img width="600" alt="Prisma studio web page" src="./.github/Prisma.png"/>
+
+## 🏭 Structure
+
+```
+app
+├── .github
+│     ^ Folder to github readme assets
+├── prisma
+│   │ ^ Folder to prisma
+│   ├── migrations
+│   │    ^ History of database migrations
+│   ├── dev.db
+│   │    ^ SQLite Database
+│   └── schema.prisma
+│        ^ All database models and your relations defined
+├── src
+│   ├── modules
+│   │   ├── institutions
+│   │   │   ├── dto
+│   │   │   │   │ ^ Data transfer object
+│   │   │   │   └── ...
+│   │   │   ├── institutions.controller.ts
+│   │   │   │    ^ Responsible to handle REST requests
+│   │   │   ├── institutions.graphql
+│   │   │   │    ^ Define queries and mutations to expose
+│   │   │   ├── institutions.module.ts
+│   │   │   │    ^ Responsible to bundle all logic and optimize
+│   │   │   ├── institutions.resolver.ts
+│   │   │   │    ^ Responsible to handle GraphQL requests
+│   │   │   └── institutions.service.ts
+│   │   │        ^ Responsible to handle tasks and perform actions
+│   │   └── ...
+│   └── services
+│       ├── PrismaService
+│       │   └── Prisma.service.ts
+│       │        ^ Injectable service responsible to connect to prisma client
+│       └── ...
+├── test < Nest.JS support for E2E tests
+│   ├── jest-e2e.json
+│   │    ^ Jest configuration
+│   └── ...
+├── .editorconfig
+│    ^ Editor configurations
+├── .env.template
+│    ^ Template for enviroment variables
+├── .eslintignore
+│    ^ ESLint ignore files
+├── .eslintrc.js
+│    ^ File to ESLint configurations
+├── .gitignore
+│    ^ File to git ignore files
+├── .prettierignore
+│    ^ File to Prettier ignore files
+├── .prettierrc
+│    ^ File to Prettier configurations
+├── LICENSE.md
+│    ^ MIT License
+├── nest-cli.json
+│    ^ Nest.JS CLI configuration
+├── package.json 
+├── pnpm-lock.yaml
+│    ^ Pnpm lock file
+├── README.md 
+├── tsconfig.build.json
+│    ^ Typescript configuration
+└── tsconfig.json
+     ^ Nest.JS provides a default tsconfig.json file
 ```
 
-## Running the app
+## ⚙ Built with <a name = "built_using"></a>
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![Apollo GraphQL](https://img.shields.io/badge/Apollo%20GraphQL-311C87?style=for-the-badge&logo=apollographql&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
-```bash
-# development
-$ npm run start
+## ✍️ Authors <a name = "authors"></a>
+- [@Hiyudev](https://github.com/Hiyudev)
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+## © License
+- MIT License
